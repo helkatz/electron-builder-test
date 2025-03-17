@@ -1,0 +1,18 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "types": ["node"],
+
+  },
+  "files": [
+    "preload.ts",
+    "main.ts",
+    "auto-updater.ts"
+  ],
+  "include": [
+  ]
+}

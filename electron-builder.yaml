@@ -1,0 +1,40 @@
+appId: com.hk-develop.electronbuilderTest
+directories:
+  output: release/
+  buildResources: build
+
+productName: ElectronBuilderTest
+buildDependenciesFromSource: true
+# compression: store
+asar: true
+publish:
+  - provider: github
+    owner: helkatz
+    repo: electron-builder-test
+
+target: NSIS
+
+nsis:
+  allowToChangeInstallationDirectory: false
+  oneClick: true
+
+files:
+  - dist/**/*
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+        #- ia32
+
+mac:
+  icon: dist
+  target:
+    - dmg
+
+linux:
+  icon: dist
+  target:
+    - AppImage
+electronVersion: 35.0.1

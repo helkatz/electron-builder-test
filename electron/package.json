@@ -1,0 +1,20 @@
+{
+  "name": "columbo",
+  "version": "2.2.4",
+  "main": "../dist/electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "prepare": "npx ts-patch install -s && echo 'prepare done'",
+    "build": "tsc",
+    "build:dev": "tsc -w",
+    "build:release": "cd .. && electron-builder",  
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "columbo Desktop Application",
+  "devDependencies": {
+    "electron-builder": "^24.13.3"
+  }
+}
