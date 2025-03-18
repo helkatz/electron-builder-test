@@ -31,6 +31,8 @@ jobs:
 
 
       - name: Debug Node.js Environment
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # ✅ Ensures GH_TOKEN is available
         run: 'node -e "console.log(''GH_TOKEN:'', process.env.GH_TOKEN ? ''SET'' : ''NOT SET'')"'
         shell: bash
 
