@@ -1,0 +1,43 @@
+name: Build Electron App
+
+on:
+  push:
+    branches:
+      - main  # Runs when pushing to 'main'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        #os: [ubuntu-latest, macos-latest, windows-latest] # Runs on 3 OS
+        os: [windows-latest] # Runs on 3 OS
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Electron App
+        run: |
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            npm run build:win
+          elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            npm run build:mac
+          elif [[ "$RUNNER_OS" == "Linux" ]]; then
+            npm run build:linux
+          fi
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: electron-build-${{ matrix.os }}
+          path: dist/
