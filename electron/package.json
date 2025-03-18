@@ -1,9 +1,10 @@
 {
-  "name": "columbo",
-  "version": "2.2.4",
+  "name": "electron-builder-test",
+  "version": "0.0.5",
   "main": "../dist/electron/main.js",
   "scripts": {
     "start": "electron .",
+    "start:dev": "electron --serve .",
     "prepare": "npx ts-patch install -s && echo 'prepare done'",
     "build": "tsc",
     "build:dev": "tsc -w",

@@ -1,7 +1,15 @@
+import { BrowserWindow } from "electron/main";
+import { initializeAutoUpdater } from "./auto-updater";
+
 // main.js
-const { app, BrowserWindow } = require('electron');
+import { app } from 'electron'
+
 const path = require('path');
 const url = require("url"); 
+
+
+const args = process.argv.slice(1);
+const serve = args.includes("--serve")
 
 // Error Handling
 process.on('uncaughtException', (error) => {
@@ -13,12 +21,10 @@ function createWindow() {
         height: 600,
         webPreferences: {
             // preload: path.join(__dirname, 'preload.js'),
-            contextIsolation: true,
-            enableRemoteModule: false,
+            contextIsolation: true
         }
     });
 
-    const serve = false // !app.isPackaged;
     const basePath = !serve ? app.getAppPath() : path.join(__dirname, "..");
     if(!serve) {
       const pathname = path.join(basePath, "dist", "electron-builder-test", "browser", "index.html")
@@ -27,10 +33,16 @@ function createWindow() {
         pathname,
         protocol: 'file:',
         slashes: true
-      }));
+      }));            
     } else {
       win.loadURL('http://localhost:4300');
     }
+
+    if(app.isPackaged) {
+        initializeAutoUpdater();
+    }
+    
+
 }
 // App Lifecycle
 app.whenReady().then(createWindow);

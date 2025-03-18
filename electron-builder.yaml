@@ -37,4 +37,4 @@ linux:
   icon: dist
   target:
     - AppImage
-electronVersion: 35.0.1
+
