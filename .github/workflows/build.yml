@@ -21,6 +21,9 @@ jobs:
         run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}"
         shell: bash
 
+      - name: Debug Node.js Environment
+        run: node -e "console.log('GH_TOKEN:', process.env.GH_TOKEN ? 'SET' : 'NOT SET')"
+        shell: bash
       # - name: Checkout code
       #   uses: actions/checkout@v4
 
