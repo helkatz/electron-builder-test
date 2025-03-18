@@ -25,13 +25,13 @@
     "build:electron": "npm run build --prefix electron",
     "build:electron:dev": "npm run build:dev --prefix electron",
 
-    "build": "npm run build:electron && npm run build:app && npm run build:release",
+    "build": "npm run build:electron && npm run build:app",
     "build:release": "electron-builder",
     "build:publish": "npx electron-builder --publish=always",
 
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux"
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "npm run build && electron-builder --mac",
+    "build:linux": "npm run build && electron-builder --linux"
   },
   "private": true,
   "dependencies": {
