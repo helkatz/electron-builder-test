@@ -1,5 +1,5 @@
 {
-  "name": "electron-builder-test",  
+  "name": "electron-builder-test",
   "publish": {
     "provider": "github",
     "owner": "helkatz",
@@ -10,25 +10,28 @@
     "email": "hkatz@gmx.at"
   },
   "description": "This project was generated with [Angular CLI]",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/electron/main.js",
   "scripts": {
     "ng": "ng",
-    "start:app": "ng serve",
-    "start:electron": "npm run start --prefix electron",
+    "start:app:dev": "ng serve",
     "start:electron:dev": "wait-on http://localhost:4300 && npm run start:dev --prefix electron",
-    "start:dev": "concurrently -s-last \"npm run build:electron:dev\" \"npm run start:app\" \"npm run start:electron:dev\"",
-    "start:prod": "npm run build:electron && ng build &&  electron .",
+    "start:dev": "concurrently -s-last \"npm run build:electron:dev\" \"npm run start:app:dev\" \"npm run start:electron:dev\"",
+
+    "start:electron": "npm run start --prefix electron",
+    "start": "npm run build:electron && ng build &&  electron .",
+
     "build:app": "ng build",
     "build:electron": "npm run build --prefix electron",
     "build:electron:dev": "npm run build:dev --prefix electron",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
+
     "build": "npm run build:electron && npm run build:app && npm run build:release",
     "build:release": "electron-builder",
-    "build:publish": "npx electron-builder --publish=always"
+    "build:publish": "npx electron-builder --publish=always",
+
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
   },
   "private": true,
   "dependencies": {
@@ -64,6 +67,7 @@
     "electron": "35.0.1",
     "electron-builder": "^25.1.8",
     "jasmine-core": "~5.2.0",
+    "jsonfile": "^6.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
