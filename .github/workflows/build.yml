@@ -31,7 +31,7 @@ jobs:
 
 
       - name: Debug Node.js Environment
-        run: node -e "console.log('GH_TOKEN:', process.env.GH_TOKEN ? 'SET' : 'NOT SET')"
+        run: 'node -e "console.log(''GH_TOKEN:'', process.env.GH_TOKEN ? ''SET'' : ''NOT SET'')"'
         shell: bash
 
       # - name: Install Dependencies
