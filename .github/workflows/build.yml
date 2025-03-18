@@ -18,38 +18,38 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install Dependencies
-        run: npm install
+      # - name: Install Dependencies
+      #   run: npm install
 
-      - name: Build Electron App
-        run: |
-          if [[ "$RUNNER_OS" == "Windows" ]]; then
-            npm run build:win
-          elif [[ "$RUNNER_OS" == "macOS" ]]; then
-            npm run build:mac
-          elif [[ "$RUNNER_OS" == "Linux" ]]; then
-            npm run build:linux
-          fi
-        # ✅ Always List Files (Even if Build Fails)
+      # - name: Build Electron App
+      #   run: |
+      #     if [[ "$RUNNER_OS" == "Windows" ]]; then
+      #       npm run build:win
+      #     elif [[ "$RUNNER_OS" == "macOS" ]]; then
+      #       npm run build:mac
+      #     elif [[ "$RUNNER_OS" == "Linux" ]]; then
+      #       npm run build:linux
+      #     fi
+      #   # ✅ Always List Files (Even if Build Fails)
 
-      - name: List Output Files
-        if: always()  # This makes sure it runs even if the previous step fails
-        run: |
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            Get-ChildItem -Recurse dist/ || echo "No files found"
-          else
-            ls -R dist/ || echo "No files found"
-          fi
-        shell: bash
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: electron-build-${{ matrix.os }}
-          path: dist/
+      # - name: List Output Files
+      #   if: always()  # This makes sure it runs even if the previous step fails
+      #   run: |
+      #     if [[ "${{ runner.os }}" == "Windows" ]]; then
+      #       Get-ChildItem -Recurse dist/ || echo "No files found"
+      #     else
+      #       ls -R dist/ || echo "No files found"
+      #     fi
+      #   shell: bash
+      # - name: Upload Build Artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: electron-build-${{ matrix.os }}
+      #     path: dist/
