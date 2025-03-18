@@ -2,10 +2,10 @@ name: Build Electron App
 
 on:
   push:
-    # branches:
-    #   - master  # Runs when pushing to 'main'
-    tags:
-      - "v*" # Runs when pushing a tag
+    branches:
+      - master  # Runs when pushing to 'main'
+    # tags:
+    #   - "v*" # Runs when pushing a tag
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
         id: version
         run: echo "VERSION=$(cat VERSION.TXT)" >> $GITHUB_ENV
         shell: bash
-        
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
