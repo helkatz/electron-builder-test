@@ -20,6 +20,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Read Version from VERSION.TXT
+        id: version
+        run: echo "VERSION=$(cat VERSION.TXT)" >> $GITHUB_ENV
+        shell: bash
+        
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -30,7 +35,12 @@ jobs:
 
       - name: Set GH_TOKEN
         run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
-      
+
+      - name: Create GitHub Release (if missing)
+        run: gh release create "v${{ env.VERSION }}" --notes "Release v${{ env.VERSION }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: Build Electron App
         shell: bash
         env:
