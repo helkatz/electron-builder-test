@@ -10,28 +10,25 @@
     "email": "hkatz@gmx.at"
   },
   "description": "This project was generated with [Angular CLI]",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/electron/main.js",
   "scripts": {
     "ng": "ng",
     "start:app:dev": "ng serve",
     "start:electron:dev": "wait-on http://localhost:4300 && npm run start:dev --prefix electron",
     "start:dev": "concurrently -s-last \"npm run build:electron:dev\" \"npm run start:app:dev\" \"npm run start:electron:dev\"",
-
     "start:electron": "npm run start --prefix electron",
     "start": "npm run build:electron && ng build &&  electron .",
-
     "build:app": "ng build",
     "build:electron": "npm run build --prefix electron",
     "build:electron:dev": "npm run build:dev --prefix electron",
-
     "build": "npm run build:electron && npm run build:app",
     "build:release": "electron-builder",
     "build:publish": "npx electron-builder --publish=always",
-
     "build:win": "npm run build && electron-builder --win --publish=always",
     "build:mac": "npm run build && electron-builder --mac --publish=always",
-    "build:linux": "npm run build && electron-builder --linux --publish=always"
+    "build:linux": "npm run build && electron-builder --linux --publish=always",
+    "updateversion": "node update-version.js"
   },
   "private": true,
   "dependencies": {
