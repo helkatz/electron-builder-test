@@ -37,7 +37,17 @@ jobs:
           elif [[ "$RUNNER_OS" == "Linux" ]]; then
             npm run build:linux
           fi
-
+        # ✅ Always List Files (Even if Build Fails)
+        
+      - name: List Output Files
+        if: always()  # This makes sure it runs even if the previous step fails
+        run: |
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            Get-ChildItem -Recurse dist/ || echo "No files found"
+          else
+            ls -R dist/ || echo "No files found"
+          fi
+        shell: bash
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
