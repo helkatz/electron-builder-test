@@ -29,9 +29,9 @@
     "build:release": "electron-builder",
     "build:publish": "npx electron-builder --publish=always",
 
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "npm run build && electron-builder --mac",
-    "build:linux": "npm run build && electron-builder --linux"
+    "build:win": "npm run build && electron-builder --win --publish=always",
+    "build:mac": "npm run build && electron-builder --mac --publish=always",
+    "build:linux": "npm run build && electron-builder --linux --publish=always"
   },
   "private": true,
   "dependencies": {
