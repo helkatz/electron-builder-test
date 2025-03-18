@@ -11,7 +11,7 @@ publish:
   - provider: github
     owner: helkatz
     repo: electron-builder-test
-    releaseType: release
+    releaseType: draft
 
 target: NSIS
 
