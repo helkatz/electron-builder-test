@@ -10,7 +10,7 @@
     "email": "hkatz@gmx.at"
   },
   "description": "This project was generated with [Angular CLI]",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "main": "dist/electron/main.js",
   "scripts": {
     "ng": "ng",
