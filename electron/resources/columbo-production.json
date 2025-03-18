@@ -1,0 +1,24 @@
+{
+  "server": "http://columbo-server.global.dev.srvint.ix2",
+  "debug": false,
+  "logging": {
+    "tags": [
+      "ui"
+    ],
+    "logConsole": {
+      "mode": "enabled",
+      "format": "{label}",
+      "eval": "console.log(info.message_no + ' ' + info.timestamp + ' %c' + (info.label || ''), colorize(info.label) , ...info.raw)"
+    },
+    "logFile": [
+      {
+        "path": "/logs/columbo-client.log",
+        "rewriteEachStartup": false,
+        "level": "info",
+        "format": "{timestamp}|{elapsedTime}|{level}|{label}|{tags}|{fn}|{message}",
+        "timestampFormat": "YYYY-MM-DD HH:mm:ss.SSS"
+      }
+    ]
+  },
+  "theme": "light"
+}

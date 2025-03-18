@@ -22,7 +22,16 @@ nsis:
 files:
   - dist/**/*
 
+extraResources:
+  - from: electron/resources/columbo-production.json
+    to: columbo.json
+  - from: electron/resources/version-history.md
+    to: version-history.md
+  - from: electron/resources/columbo.png
+    to: columbo.png
+
 win:
+  icon: electron/resources/columbo.png
   target:
     - target: nsis
       arch:
@@ -30,12 +39,12 @@ win:
         #- ia32
 
 mac:
-  icon: dist
+  icon: electron/resources/columbo.png
   target:
     - dmg
 
 linux:
-  icon: dist
+  icon: electron/resources/columbo.png
   target:
     - AppImage
 
