@@ -17,30 +17,34 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Set GH_TOKEN
-        run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
-      
-      - name: Build Electron App
+      - name: Debug GH_TOKEN
+        run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}"
         shell: bash
-        run: |
-          if [[ "$RUNNER_OS" == "Windows" ]]; then
-            npm run build:win
-          elif [[ "$RUNNER_OS" == "macOS" ]]; then
-            npm run build:mac
-          elif [[ "$RUNNER_OS" == "Linux" ]]; then
-            npm run build:linux
-          fi
+
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
+
+      # - name: Install Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 22
+
+      # - name: Install Dependencies
+      #   run: npm install
+
+      # - name: Set GH_TOKEN
+      #   run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+      
+      # - name: Build Electron App
+      #   shell: bash
+      #   run: |
+      #     if [[ "$RUNNER_OS" == "Windows" ]]; then
+      #       npm run build:win
+      #     elif [[ "$RUNNER_OS" == "macOS" ]]; then
+      #       npm run build:mac
+      #     elif [[ "$RUNNER_OS" == "Linux" ]]; then
+      #       npm run build:linux
+      #     fi
       #   # ✅ Always List Files (Even if Build Fails)
 
       # - name: List Output Files
