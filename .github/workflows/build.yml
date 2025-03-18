@@ -28,6 +28,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Set GH_TOKEN
+        run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+      
       - name: Build Electron App
         shell: bash
         run: |
