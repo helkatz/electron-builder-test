@@ -10,7 +10,7 @@
     "email": "hkatz@gmx.at"
   },
   "description": "This project was generated with [Angular CLI]",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/electron/main.js",
   "scripts": {
     "ng": "ng",
@@ -22,7 +22,7 @@
     "build:app": "ng build",
     "build:electron": "npm run build --prefix electron",
     "build:electron:dev": "npm run build:dev --prefix electron",
-    "build": "npm run build:electron && npm run build:app",
+    "build": "npm run updateversion && npm run build:electron && npm run build:app",
     "build:release": "electron-builder",
     "build:publish": "npx electron-builder --publish=always",
     "build:win": "npm run build && electron-builder --win --publish=always",
