@@ -28,15 +28,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # - name: Build Electron App
-      #   run: |
-      #     if [[ "$RUNNER_OS" == "Windows" ]]; then
-      #       npm run build:win
-      #     elif [[ "$RUNNER_OS" == "macOS" ]]; then
-      #       npm run build:mac
-      #     elif [[ "$RUNNER_OS" == "Linux" ]]; then
-      #       npm run build:linux
-      #     fi
+      - name: Build Electron App
+        run: |
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            npm run build:win
+          elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            npm run build:mac
+          elif [[ "$RUNNER_OS" == "Linux" ]]; then
+            npm run build:linux
+          fi
       #   # ✅ Always List Files (Even if Build Fails)
 
       # - name: List Output Files
