@@ -1,10 +1,6 @@
 {
   "name": "electron-builder-test",
-  "publish": {
-    "provider": "github",
-    "owner": "helkatz",
-    "repo": "electron-builder-test"
-  },
+
   "author": {
     "name": "Helmut Katz",
     "email": "hkatz@gmx.at"
