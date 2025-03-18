@@ -21,16 +21,18 @@ jobs:
         run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}"
         shell: bash
 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+
       - name: Debug Node.js Environment
         run: node -e "console.log('GH_TOKEN:', process.env.GH_TOKEN ? 'SET' : 'NOT SET')"
         shell: bash
-      # - name: Checkout code
-      #   uses: actions/checkout@v4
-
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 22
 
       # - name: Install Dependencies
       #   run: npm install
