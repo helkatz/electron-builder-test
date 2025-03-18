@@ -1,12 +1,11 @@
 {
   "name": "electron-builder-test",
-
   "author": {
     "name": "Helmut Katz",
     "email": "hkatz@gmx.at"
   },
   "description": "This project was generated with [Angular CLI]",
-  "version": "0.0.10",
+  "version": "0.0.15",
   "main": "dist/electron/main.js",
   "scripts": {
     "ng": "ng",
@@ -38,6 +37,7 @@
     "@angular/router": "^18.2.0",
     "electron-squirrel-startup": "^1.0.1",
     "electron-updater": "^6.3.9",
+    "lodash": "^4.17.21",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -54,7 +54,9 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.7.0",
     "@electron-forge/plugin-fuses": "^7.7.0",
     "@electron/fuses": "^1.8.0",
+    "@types/electron-builder": "^2.0.29",
     "@types/jasmine": "~5.1.0",
+    "@types/lodash": "^4.17.16",
     "concurrently": "^9.1.2",
     "dotenv": "^16.4.7",
     "electron": "35.0.1",

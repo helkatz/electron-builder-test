@@ -2,7 +2,7 @@ import { BrowserWindow } from "electron/main";
 import { initializeAutoUpdater } from "./auto-updater";
 
 // main.js
-import { app } from 'electron'
+import { app, ipcMain } from 'electron'
 
 const path = require('path');
 const url = require("url"); 
@@ -20,11 +20,15 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            // preload: path.join(__dirname, 'preload.js'),
+            preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true
         }
     });
 
+    ipcMain.on("getVersion", (event) => {
+        event.returnValue = app.getVersion()
+    })
+    
     const basePath = !serve ? app.getAppPath() : path.join(__dirname, "..");
     if(!serve) {
       const pathname = path.join(basePath, "dist", "electron-builder-test", "browser", "index.html")
