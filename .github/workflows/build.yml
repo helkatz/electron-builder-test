@@ -2,10 +2,10 @@ name: Build Electron App
 
 on:
   push:
-    # branches:
-      # - releases  # Runs when pushing to 'main'
-    tags:
-      - "v*" # Runs when pushing a tag
+    branches:
+      - master  # Runs when pushing to 'main'
+    # tags:
+    #   - "v*" # Runs when pushing a tag
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: 22
 
@@ -37,9 +37,19 @@ jobs:
           elif [[ "$RUNNER_OS" == "Linux" ]]; then
             npm run build:linux
           fi
+        # ✅ Always List Files (Even if Build Fails)
 
+      - name: List Output Files
+        if: always()  # This makes sure it runs even if the previous step fails
+        run: |
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            Get-ChildItem -Recurse dist/ || echo "No files found"
+          else
+            ls -R dist/ || echo "No files found"
+          fi
+        shell: bash
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: electron-build-${{ matrix.os }}
           path: dist/
