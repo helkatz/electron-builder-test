@@ -2,8 +2,10 @@ name: Build Electron App
 
 on:
   push:
-    branches:
-      - main  # Runs when pushing to 'main'
+    # branches:
+      # - releases  # Runs when pushing to 'main'
+    tags:
+      - "v*" # Runs when pushing a tag
   workflow_dispatch: # Allows manual trigger
 
 jobs:
